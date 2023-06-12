@@ -1,0 +1,39 @@
+-- -------------------------------- TRABAJANDO CON TABLAS ----------------------------
+
+-- SELECCIONAMOS LA BASE DE DATOS youtube_db
+USE youtube_db;
+
+-- CREAMOS LA TABLA PRODUCTOS
+CREATE TABLE productos (
+	nombre VARCHAR (60),
+	stock INT,
+	precio INT
+);
+
+-- MOSTRAMOS LAS TABLAS DE NUESTRA BASE DE DATOS youtube_db
+SHOW TABLES;
+
+-- AÑADIMOS LA COLUMNA PROVEEDOR A LA TABLA PRODUCTOS
+ALTER TABLE productos ADD COLUMN proveedor VARCHAR (60);
+
+-- MODIFICAMOS EL TIPO DE DATO precio DE LA TABLA productos
+ALTER TABLE productos MODIFY precio DECIMAL(10,2);
+
+-- RENOMBRAMOS LA COLUMNA stock A CANTIDAD
+ALTER TABLE productos RENAME COLUMN stock TO cantidad; 
+
+-- ELIMINAMOS LA COLUMNA proveedor
+ALTER TABLE productos DROP COLUMN proveedor;
+
+-- ELIMINAMOS LA TABLA clientes
+DROP TABLE clientes;
+
+-- CREAMOS LA TABLA CLIENTES CON SUS RESPECTIVOS CONSTRINS
+CREATE TABLE clientes(
+	id_cliente INT AUTO_INCREMENT PRIMARY KEY,
+	nombre VARCHAR (60) NOT NULL,
+	apellido VARCHAR (60) NOT NULL,
+	correo VARCHAR (100) NOT NULL UNIQUE,
+	telefono INT(8) NOT NULL,
+	direccion VARCHAR (200) DEFAULT "SIN DIRECCIÓN"
+);
